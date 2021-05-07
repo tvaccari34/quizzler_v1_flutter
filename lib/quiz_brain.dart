@@ -28,10 +28,17 @@ class QuizBrain {
     return _questionBank[_questionNumber].questionAnswer;
   }
 
-  void nextQuestion() {
+  bool getNextQuestion() {
     if (_questionNumber < _questionBank.length - 1) {
       _questionNumber++;
+      return true;
+    }
+    else{
+      _questionNumber = 0;
+      return false;
     }
   }
+
+
 
 }

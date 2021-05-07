@@ -47,7 +47,25 @@ class _QuizPageState extends State<QuizPage> {
           scoreKeeper.add(Icon(Icons.close, color: Colors.red,));
         }
 
-        quizBrain.nextQuestion();
+        if(!quizBrain.getNextQuestion()){
+          Alert(
+            context: context,
+            type: AlertType.none,
+            title: "Finished!",
+            desc: "You've reached the end of the quiz.",
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "Restart",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () => Navigator.pop(context),
+                width: 120,
+              )
+            ],
+          ).show();
+          scoreKeeper.clear();
+        }
       });
     }
 
